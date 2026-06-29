@@ -208,7 +208,7 @@ h1, h2, h3 { line-height: 1.08; font-weight: 600; }
   font-family: var(--sans); font-weight: 700; letter-spacing: 0.04em;
   font-size: 1.3rem; color: #fff;
 }
-.brand__sys { font-family: var(--mono); font-weight: 500; letter-spacing: 0.01em; color: var(--senal-viva); }
+.brand__sys { font-family: var(--sans); font-weight: 700; letter-spacing: 0.04em; color: #fff; }
 
 /* Nav centrado entre logo y CTA */
 .nav { display: contents; }
@@ -409,6 +409,15 @@ h1, h2, h3 { line-height: 1.08; font-weight: 600; }
   font-weight: 400;
   letter-spacing: 0.01em;
 }
+/* Hero con keywords SEO */
+.b-hero__head {
+  font-family: var(--display); font-weight: 700; text-transform: uppercase;
+  color: var(--tinta); line-height: 0.98; letter-spacing: -0.02em;
+  font-size: clamp(2.4rem, 1.3rem + 5.4vw, 6.5rem);
+  max-width: 16ch; margin-inline: auto; text-wrap: balance;
+}
+.b-hero__head em { color: var(--senal); font-style: normal; }
+.b-hero__actions { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: clamp(1.75rem, 1rem + 2vw, 2.75rem); }
 
 /* --- BANDA 2 · STATEMENT --- */
 .b-statement { background: var(--tinta); color: #fff; text-align: center; }
@@ -492,6 +501,63 @@ h1, h2, h3 { line-height: 1.08; font-weight: 600; }
 .b-cta__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-top: clamp(2rem, 1rem + 2vw, 3rem); }
 .b-cta .btn--ghost { border-color: rgba(255,255,255,0.35); color: #fff; }
 .b-cta .btn--ghost:hover { border-color: var(--senal-viva); color: #fff; }
+
+/* =========================================================================
+   DISEÑO FLUIDO — bandas con esquinas redondeadas que se superponen
+   ========================================================================= */
+.band-full { position: relative; }
+.band-full + .band-full {
+  border-top-left-radius: clamp(22px, 3.5vw, 56px);
+  border-top-right-radius: clamp(22px, 3.5vw, 56px);
+  margin-top: clamp(-56px, -3.5vw, -22px);
+}
+/* el footer también sube y redondea sobre la última banda */
+.site-footer { position: relative; border-top-left-radius: clamp(22px, 3.5vw, 56px); border-top-right-radius: clamp(22px, 3.5vw, 56px); margin-top: clamp(-56px, -3.5vw, -22px); }
+
+/* =========================================================================
+   SCROLL — stagger (animación escalonada de hijos)
+   ========================================================================= */
+.js .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity 0.55s var(--ease), transform 0.55s var(--ease); }
+.stagger.is-visible > * { opacity: 1; transform: none; }
+.stagger.is-visible > *:nth-child(1) { transition-delay: 0.04s; }
+.stagger.is-visible > *:nth-child(2) { transition-delay: 0.10s; }
+.stagger.is-visible > *:nth-child(3) { transition-delay: 0.16s; }
+.stagger.is-visible > *:nth-child(4) { transition-delay: 0.22s; }
+.stagger.is-visible > *:nth-child(5) { transition-delay: 0.28s; }
+.stagger.is-visible > *:nth-child(6) { transition-delay: 0.34s; }
+.stagger.is-visible > *:nth-child(7) { transition-delay: 0.40s; }
+.stagger.is-visible > *:nth-child(8) { transition-delay: 0.46s; }
+.stagger.is-visible > *:nth-child(n+9) { transition-delay: 0.52s; }
+
+/* =========================================================================
+   BANDA INDUSTRIA / CONTEXTO (home)
+   ========================================================================= */
+.b-context { background: var(--tinta); color: #fff; }
+.b-context__head {
+  font-family: var(--display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(2rem, 1.2rem + 3.4vw, 4rem); line-height: 1.02;
+  letter-spacing: -0.02em; color: #fff; max-width: 20ch;
+}
+.b-context__head em { color: var(--senal-viva); font-style: normal; }
+.b-context__sub { color: var(--sobre-osc-tenue); max-width: 60ch; margin-top: 1.75rem; font-size: var(--fs-lead); }
+.b-context__stats { display: flex; flex-wrap: wrap; gap: 1rem 3rem; margin-top: 2.5rem; }
+.b-context__stat { display: flex; flex-direction: column; gap: 0.2rem; }
+.b-context__stat b { font-family: var(--display); font-weight: 700; font-size: clamp(2rem, 1.4rem + 2vw, 3rem); color: var(--senal-viva); line-height: 1; }
+.b-context__stat span { font-family: var(--sans); font-size: 0.85rem; color: var(--sobre-osc-tenue); max-width: 24ch; }
+
+/* =========================================================================
+   TESTIMONIOS (home) — citas reales
+   ========================================================================= */
+.b-testi { background: var(--papel-hueso); }
+.testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: clamp(2rem, 1rem + 3vw, 4rem); }
+.testi__quote {
+  font-family: var(--display); font-weight: 600; font-size: clamp(1.3rem, 1rem + 1.2vw, 1.85rem);
+  line-height: 1.32; color: var(--tinta); letter-spacing: -0.01em;
+}
+.testi__quote::before { content: "“"; color: var(--senal); }
+.testi__quote::after { content: "”"; color: var(--senal); }
+.testi__cite { margin-top: 1.25rem; font-family: var(--sans); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grafito); }
+.testi__cite b { color: var(--senal); }
 
 @media (max-width: 720px) {
   .svc-row { flex-direction: column; align-items: stretch; gap: 0.6rem; }
@@ -702,23 +768,30 @@ h1, h2, h3 { line-height: 1.08; font-weight: 600; }
   position: fixed; inset: 0; z-index: 100;
   background: var(--noche);
   display: grid; place-items: center;
-  transition: opacity 0.7s var(--ease), visibility 0.7s var(--ease);
+  transition: transform 0.85s cubic-bezier(0.76, 0, 0.24, 1);
 }
-.intro.is-done { opacity: 0; visibility: hidden; }
+.intro.is-done { transform: translateY(-101%); }
+.intro__inner { display: flex; flex-direction: column; align-items: center; }
 .intro__logo {
-  width: clamp(96px, 18vw, 150px);
-  opacity: 0; transform: scale(0.85);
-  animation: intro-in 1s var(--ease) forwards;
+  width: clamp(80px, 13vw, 122px);
+  opacity: 0; transform: scale(0.55) rotate(-14deg);
+  animation: intro-logo 0.95s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
 }
 .intro__word {
-  font-family: var(--sans); font-weight: 700; letter-spacing: 0.3em;
-  color: #fff; font-size: 0.85rem; text-transform: uppercase;
-  margin-top: 1.5rem; opacity: 0;
-  animation: intro-word 0.8s var(--ease) 0.5s forwards;
+  font-family: var(--display); font-weight: 700; text-transform: uppercase;
+  font-size: clamp(0.95rem, 2.4vw, 1.3rem); letter-spacing: 0.52em;
+  color: #fff; margin-top: 1.5rem; padding-left: 0.52em;
+  opacity: 0; transform: translateY(12px);
+  animation: intro-word 0.7s var(--ease) 0.5s forwards;
 }
-.intro__word span { color: var(--senal-viva); }
-@keyframes intro-in { to { opacity: 1; transform: scale(1); } }
-@keyframes intro-word { to { opacity: 1; } }
+.intro__line {
+  display: block; height: 2px; width: 0; margin-top: 1.3rem;
+  background: var(--senal-viva); border-radius: 2px;
+  animation: intro-line 0.65s var(--ease) 0.8s forwards;
+}
+@keyframes intro-logo { to { opacity: 1; transform: scale(1) rotate(0); } }
+@keyframes intro-word { to { opacity: 1; transform: none; } }
+@keyframes intro-line { to { width: clamp(110px, 20vw, 230px); } }
 
 /* =========================================================================
    FOCUS / ACCESIBILIDAD
@@ -781,5 +854,5 @@ h1, h2, h3 { line-height: 1.08; font-weight: 600; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
   .intro { display: none; }
-  .js .reveal { opacity: 1 !important; transform: none !important; }
+  .js .reveal, .js .stagger > * { opacity: 1 !important; transform: none !important; }
 }

@@ -20,9 +20,9 @@
         try { sessionStorage.setItem("argensys_intro", "1"); } catch (e) {}
         setTimeout(function () {
           intro.parentNode && intro.parentNode.removeChild(intro);
-        }, 800);
+        }, 900);
       };
-      setTimeout(close, 2200);
+      setTimeout(close, 2050);
       intro.addEventListener("click", close);
     }
   }
@@ -46,7 +46,7 @@
   }
 
   /* ----- Scroll-reveal (R3) --------------------------------------------- */
-  var reveals = document.querySelectorAll(".reveal");
+  var reveals = document.querySelectorAll(".reveal, .stagger");
   if (reduced || !("IntersectionObserver" in window)) {
     [].forEach.call(reveals, function (el) { el.classList.add("is-visible"); });
   } else {
